@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aterix - Modern Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+            color: #2d3748;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-reveal-content {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .card:hover .card-reveal-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: scale(0.95);
+        }
+        .modal-open .modal-content {
+            transform: scale(1);
+        }
+
+        .tab-button.active {
+            background-color: #4a5568;
+            color: white;
+            border-bottom: 2px solid #63b3ed;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="bg-white sticky top-0 z-50 shadow-md py-6 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-3xl font-bold text-gray-900">Aterix</h1>
+                <p class="hidden sm:block text-gray-500 font-medium">Innovation at the intersection of design and technology.</p>
+            </div>
+            <!-- Empty div to maintain spacing and allow for future navigation -->
+            <div></div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 sm:p-8">
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-12">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-10">Our Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 -->
+                <div class="card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden">
+                    <img src="https://placehold.co/600x400/2d3748/e2e8f0?text=Steave+Automation" alt="Steave Automation" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">steave automation</h3>
+                        <p class="text-gray-600">Automates meeting follow-ups, reminders, CRM updates, and client communication using AI and calendar triggers.</p>
+                        <div class="card-reveal-content mt-4 flex justify-end space-x-3">
+                            <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">Live Demo</a>
+                            <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden">
+                    <img src="https://placehold.co/600x400/4a5568/e2e8f0?text=Email+Automation" alt="Email Automation" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Email automation</h3>
+                        <p class="text-gray-600"> Streamlined Email Workflows Powered by n8n </p>
+                        <div class="card-reveal-content mt-4 flex justify-end space-x-3">
+                            <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">Live Demo</a>
+                            <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden">
+                    <img src="https://placehold.co/600x400/2c5292/e2e8f0?text=Calculator" alt="Multifunctional Calculator" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Multifuntional Calculator</h3>
+                        <p class="text-gray-600"> A multifunctional calculator using Google Collab and Python </p>
+                        <div class="card-reveal-content mt-4 flex justify-end space-x-3">
+                            <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">Live Demo</a>
+                            <a href="#" class="text-blue-500 hover:text-blue-700 font-medium">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="py-12">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-10">Our Team</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member Card 1 -->
+                <div class="card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer team-member-card" data-member-id="0">
+                    <img src="assets/muntasir.jpg" alt="muntasir" class="w-full h-64 object-cover">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Muntasir Mahmud</h3>
+                        <p class="text-blue-500 font-medium">Lead Developer</p>
+                    </div>
+                </div>
+                <!-- Team Member Card 2 -->
+                <div class="card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer team-member-card" data-member-id="1">
+                    <img src="assets/hadi.jpg" alt="Abdul Hadi Jilani" class="w-full h-64 object-cover">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Abdul Hadi Jilani</h3>
+                        <p class="text-blue-500 font-medium">chatgpt expert</p>
+                    </div>
+                </div>
+                <!-- Team Member Card 3 -->
+                <div class="card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer team-member-card" data-member-id="2">
+                    <img src="https://placehold.co/400x400/2d3748/cbd5e0?text=Empty" alt="Peter Jones" class="w-full h-64 object-cover">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Empty</h3>
+                        <p class="text-blue-500 font-medium">Project Manager</p>
+                    </div>
+                </div>
+                <!-- Team Member Card 4 -->
+                <div class="card bg-white rounded-2xl shadow-lg hover-lift overflow-hidden cursor-pointer team-member-card" data-member-id="3">
+                    <img src="https://placehold.co/400x400/a0aec0/2d3748?text=Empty" alt="Emily Davis" class="w-full h-64 object-cover">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Empty</h3>
+                        <p class="text-blue-500 font-medium">Full-Stack Engineer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Profile Modal -->
+    <div id="profile-modal-overlay" class="fixed inset-0 z-50 hidden items-center justify-center modal-overlay opacity-0">
+        <div id="profile-modal" class="modal-content bg-white rounded-2xl shadow-2xl w-11/12 md:w-3/4 lg:w-2/3 max-h-[90vh] overflow-y-auto transform scale-95 p-6 md:p-8">
+            <!-- Modal Header -->
+            <div class="flex items-start justify-between pb-4 border-b border-gray-200">
+                <div class="flex items-center space-x-6">
+                    <img id="modal-photo" src="https://placehold.co/120x120" alt="Profile Photo" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover shadow-md">
+                    <div>
+                        <h3 id="modal-name" class="text-2xl sm:text-3xl font-bold text-gray-800"></h3>
+                        <p id="modal-role" class="text-lg text-blue-500"></p>
+                    </div>
+                </div>
+                <button id="modal-close-btn" class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="fas fa-times fa-2x"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Tabs -->
+            <div class="mt-6">
+                <div class="flex border-b border-gray-300">
+                    <button class="tab-button py-2 px-4 font-semibold text-gray-600 transition-colors active" data-tab="certifications">Certifications</button>
+                    <button class="tab-button py-2 px-4 font-semibold text-gray-600 transition-colors" data-tab="skills">Skills</button>
+                    <button class="tab-button py-2 px-4 font-semibold text-gray-600 transition-colors" data-tab="projects">Current Learning & Projects</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div id="tab-certifications" class="tab-content mt-6">
+                    <div id="certifications-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <!-- Certification items will be injected here by JS -->
+                    </div>
+                </div>
+                <div id="tab-skills" class="tab-content mt-6 hidden">
+                    <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+                        <!-- Skill items will be injected here by JS -->
+                    </div>
+                </div>
+                <div id="tab-projects" class="tab-content mt-6 hidden">
+                    <div id="projects-list">
+                        <!-- Projects items will be injected here by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const teamMembers = [
+                {
+                    name: 'muntasir mahmud',
+                    role: 'Lead Developer',
+                    photo: 'assets/muntasir.jpg',
+                    certifications: [
+                        { img: 'assets/web- muntasir (3).jpeg', title: 'Responsive Web Design\nfreecodecamp.org', link: 'https://www.freecodecamp.org/certification/tasir/responsive-web-design' },
+                        { img: 'assets/math- muntasir (2).jpeg', title: 'College Algebra With python\nfreecodecamp.org', link: 'https://freecodecamp.org/certification/tasir/college-algebra-with-python-v8' },
+                        { img: 'assets/introduction_to_cip.png', title: 'Introduction to Critical Infrastructure Protection\nOPSWAT Academy', link: 'https://learn.opswatacademy.com/certificate/u98PyuYomw' },
+                        { img: 'assets/machine learning.jpeg', title: 'Machine Learning with Python\nfreeCodeCamp', link: 'https://freecodecamp.org/certification/Tasir/machine-learning-with-python-v7' },
+                        { img: 'assets/SQL- muntasir (1).jpeg', title: 'Introduction to SQL\nSololearn', link: '#' }
+                    ],
+                    skills: [
+                        { icon: '<i class="fab fa-python fa-2x text-blue-500"></i>', name: 'Python', tooltip: 'Proficient in backend development and data science.' },
+                        { icon: '<i class="fab fa-js-square fa-2x text-yellow-500"></i>', name: 'JavaScript', tooltip: 'Expertise in modern JS frameworks like React and Vue.' },
+                        { icon: '<i class="fab fa-html5 fa-2x text-orange-500"></i>', name: 'HTML', tooltip: 'Semantic and accessible web markup.' },
+                        { icon: '<i class="fas fa-brain fa-2x text-green-500"></i>', name: 'TensorFlow', tooltip: 'Building and training machine learning models.' }
+                    ],
+                    currentProjects: [
+                        { name: 'Project Atlas', description: 'Developing a new scalable backend for our next-gen platform.', demoLink: '#' },
+                        { name: 'Machine Learning Initiative', description: 'Implementing an ML model to optimize our marketing campaigns.', demoLink: '#' }
+                    ]
+                },
+                {
+                    name: 'Abdul Hadi Jilani',
+                    role: 'chatgpt expert',
+                    photo: 'assets/hadi.jpg',
+                    certifications: [
+                        { img: 'https://placehold.co/400x250/10a37f/e2e8f0?text=ChatGPT+Certification', title: 'ChatGPT Advanced Prompt Engineering', link: '#' }
+                    ],
+                    skills: [
+                        { icon: '<i class="fas fa-robot fa-2x text-green-600"></i>', name: 'ChatGPT', tooltip: 'Expert in conversational AI and prompt engineering.' }
+                    ],
+                    currentProjects: [
+                        { name: 'chatting with chatgpt', description: 'Leading the redesign of the Aterix mobile application for improved usability.', demoLink: '#' }
+                    ]
+                },
+                {
+                    name: 'current empty',
+                    role: 'Project Manager',
+                    photo: 'https://placehold.co/400x400/2d3748/cbd5e0?text=emty',
+                    certifications: [
+                        { img: 'https://placehold.co/400x250/4a5568/f7fafc?text=PMP+Certification', title: 'PMP Certification', link: '#' },
+                        { img: 'https://placehold.co/400x250/4a5568/f7fafc?text=Agile+Certified', title: 'Agile Certified Practitioner', link: '#' }
+                    ],
+                    skills: [
+                        { icon: '<i class="fas fa-tasks fa-2x text-blue-500"></i>', name: 'Scrum', tooltip: 'Expert in Agile methodologies and Scrum framework.' },
+                        { icon: '<i class="fas fa-project-diagram fa-2x text-green-500"></i>', name: 'Project Management', tooltip: 'Managing project timelines, budgets, and teams.' },
+                        { icon: '<i class="fas fa-comments fa-2x text-purple-500"></i>', name: 'Communication', tooltip: 'Facilitating clear and effective communication.' }
+                    ],
+                    currentProjects: [
+                        { name: 'Team Workflow Optimization', description: 'Streamlining our internal project management workflows for efficiency.' }
+                    ]
+                },
+                {
+                    name: 'currently empty',
+                    role: 'Full-Stack Engineer',
+                    photo: 'https://placehold.co/400x400/a0aec0/2d3748?text=emty',
+                    certifications: [
+                        { img: 'https://placehold.co/400x250/1a202c/e2e8f0?text=MERN+Stack', title: 'MERN Stack Developer', link: '#' },
+                        { img: 'https://placehold.co/400x250/1a202c/e2e8f0?text=Django+Framework', title: 'Django REST Framework', link: '#' }
+                    ],
+                    skills: [
+                        { icon: '<i class="fab fa-react fa-2x text-blue-400"></i>', name: 'React', tooltip: 'Building dynamic and responsive user interfaces.' },
+                        { icon: '<i class="fab fa-node-js fa-2x text-green-500"></i>', name: 'Node.js', tooltip: 'Building scalable backend APIs.' },
+                        { icon: '<i class="fab fa-js-square fa-2x text-yellow-500"></i>', name: 'JavaScript', tooltip: 'Experienced in both frontend and backend development.' },
+                        { icon: '<i class="fab fa-html5 fa-2x text-orange-500"></i>', name: 'HTML5', tooltip: 'Semantic and accessible web markup.' },
+                        { icon: '<i class="fab fa-css3-alt fa-2x text-blue-500"></i>', name: 'CSS3', tooltip: 'Modern styling with Tailwind CSS and SCSS.' }
+                    ],
+                    currentProjects: [
+                        { name: 'API Gateway', description: 'Developing a new, robust API gateway for microservices architecture.', demoLink: '#' },
+                        { name: 'Frontend Refactor', description: 'Refactoring the company website to use a modern React framework.' }
+                    ]
+                }
+            ];
+
+            const modalOverlay = document.getElementById('profile-modal-overlay');
+            const modal = document.getElementById('profile-modal');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const teamCards = document.querySelectorAll('.team-member-card');
+            
+            const modalName = document.getElementById('modal-name');
+            const modalRole = document.getElementById('modal-role');
+            const modalPhoto = document.getElementById('modal-photo');
+            const certificationsGrid = document.getElementById('certifications-grid');
+            const skillsGrid = document.getElementById('skills-grid');
+            const projectsList = document.getElementById('projects-list');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            // Function to open the modal and populate data
+            function openModal(memberId) {
+                const member = teamMembers[memberId];
+                if (!member) return;
+
+                // Populate basic info
+                modalName.textContent = member.name;
+                modalRole.textContent = member.role;
+                modalPhoto.src = member.photo;
+
+                // Populate certifications
+                certificationsGrid.innerHTML = member.certifications.map(cert => `
+                    <div class="rounded-xl shadow-lg bg-gray-100 p-4 hover-lift">
+                        <a href="${cert.link}" target="_blank" class="block">
+                            <img src="${cert.img}" alt="${cert.title}" class="w-full h-auto rounded-lg mb-2">
+                        </a>
+                        <p class="text-sm font-medium text-gray-700">${cert.title}</p>
+                    </div>
+                `).join('');
+
+                // Populate skills
+                skillsGrid.innerHTML = member.skills.map(skill => `
+                    <div class="relative flex flex-col items-center p-4 bg-gray-100 rounded-xl group hover-lift">
+                        <div class="text-4xl mb-2">${skill.icon}</div>
+                        <p class="font-medium text-gray-700">${skill.name}</p>
+                        <div class="absolute bottom-full mb-2 hidden group-hover:block px-3 py-1 text-sm text-white bg-gray-800 rounded-md shadow-lg transition-opacity duration-300">
+                            ${skill.tooltip}
+                        </div>
+                    </div>
+                `).join('');
+
+                // Populate projects
+                projectsList.innerHTML = member.currentProjects.map(project => `
+                    <div class="bg-gray-100 p-4 rounded-xl shadow-md mb-4 hover-lift">
+                        <h4 class="text-lg font-semibold text-gray-800">${project.name}</h4>
+                        <p class="text-gray-600 mt-1">${project.description}</p>
+                        ${project.demoLink ? `<a href="${project.demoLink}" target="_blank" class="text-blue-500 hover:underline font-medium mt-2 block">View Demo</a>` : ''}
+                    </div>
+                `).join('');
+
+                // Reset to first tab
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabButtons[0].classList.add('active');
+                tabContents.forEach(content => content.classList.add('hidden'));
+                tabContents[0].classList.remove('hidden');
+
+                // Show the modal
+                modalOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    modalOverlay.classList.add('opacity-100');
+                    modal.classList.add('modal-open');
+                }, 10); // Small delay for transition
+            }
+
+            // Function to close the modal
+            function closeModal() {
+                modalOverlay.classList.remove('opacity-100');
+                modal.classList.remove('modal-open');
+                setTimeout(() => {
+                    modalOverlay.classList.add('hidden');
+                }, 300); // Wait for transition to finish
+            }
+
+            // Event listeners for team cards
+            teamCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const memberId = card.getAttribute('data-member-id');
+                    openModal(memberId);
+                });
+            });
+
+            // Event listener for modal close button and overlay
+            modalCloseBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Event listeners for tabs
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabName = button.getAttribute('data-tab');
+                    
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    tabContents.forEach(content => content.classList.add('hidden'));
+                    document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+</html>
+    </script>
+</body>
+</html>
