@@ -108,8 +108,7 @@
                                 <h3 class="text-white text-xl font-bold">steave automation</h3>
                                 <p class="text-slate-200 mt-2">Automates meeting follow-ups, reminders, CRM updates, and client communication using AI and calendar triggers.</p>
                                 <div class="mt-4 flex space-x-3">
-                                    <a href="#" class="text-sm bg-white text-primary px-4 py-2 rounded-lg font-medium hover:bg-slate-100 transition">Live Demo</a>
-                                    <a href="#" class="text-sm bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-secondary transition">GitHub</a>
+                                    <a href="https://github.com/aterix/steave-automation-workflow" class="text-sm bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-secondary transition">GitHub</a>
                                 </div>
                             </div>
                         </div>
@@ -129,8 +128,7 @@
                                 <h3 class="text-white text-xl font-bold">Email automation</h3>
                                 <p class="text-slate-200 mt-2">Streamlined Email Workflows Powered by n8n</p>
                                 <div class="mt-4 flex space-x-3">
-                                    <a href="#" class="text-sm bg-white text-primary px-4 py-2 rounded-lg font-medium hover:bg-slate-100 transition">Live Demo</a>
-                                    <a href="#" class="text-sm bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-secondary transition">GitHub</a>
+                                    <a href="https://github.com/aterix/email-automation-workflow" class="text-sm bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-secondary transition">GitHub</a>
                                 </div>
                             </div>
                         </div>
@@ -150,8 +148,7 @@
                                 <h3 class="text-white text-xl font-bold">Multifuntional Calculator</h3>
                                 <p class="text-slate-200 mt-2">A multifunctional calculator using Google Collab and Python</p>
                                 <div class="mt-4 flex space-x-3">
-                                    <a href="#" class="text-sm bg-white text-primary px-4 py-2 rounded-lg font-medium hover:bg-slate-100 transition">Live Demo</a>
-                                    <a href="#" class="text-sm bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-secondary transition">GitHub</a>
+                                    <a href="https://github.com/aterix/multifunctional-calculator" class="text-sm bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-secondary transition">GitHub</a>
                                 </div>
                             </div>
                         </div>
@@ -273,9 +270,9 @@
                 <div class="md:w-2/3">
                     <!-- Tabs -->
                     <div class="flex border-b mb-6">
-                        <button onclick="openTab('certifications')" class="tab-button py-3 px-6 font-medium text-slate-600 border-b-2 border-transparent hover:text-primary">Certifications</button>
-                        <button onclick="openTab('skills')" class="tab-button py-3 px-6 font-medium text-slate-600 border-b-2 border-transparent hover:text-primary">Skills</button>
-                        <button onclick="openTab('learning')" class="tab-button py-3 px-6 font-medium text-slate-600 border-b-2 border-transparent hover:text-primary">Learning & Projects</button>
+                        <button onclick="openTab('certifications', event)" class="tab-button py-3 px-6 font-medium text-slate-600 border-b-2 border-transparent hover:text-primary">Certifications</button>
+                        <button onclick="openTab('skills', event)" class="tab-button py-3 px-6 font-medium text-slate-600 border-b-2 border-transparent hover:text-primary">Skills</button>
+                        <button onclick="openTab('learning', event)" class="tab-button py-3 px-6 font-medium text-slate-600 border-b-2 border-transparent hover:text-primary">Learning & Projects</button>
                     </div>
                     <!-- Tab Content -->
                     <div id="certifications" class="tab-content">
@@ -415,7 +412,7 @@
         }
 
         // Open tab content
-        function openTab(tabName) {
+        function openTab(tabName, event) {
             // Hide all tab content
             const tabContents = document.querySelectorAll('.tab-content');
             tabContents.forEach(content => content.classList.remove('active'));
